@@ -1,0 +1,100 @@
+<app-nav></app-nav>
+<div style="margin:15px">
+    <div class="float-left">
+        <span style="font-size: 24px;">Events</span>
+    </div>
+    <div class="float-right">
+      <button mat-raised-button color="primary" style="margin-right: 10px;" (click)="openVerticallyCentered(addevent)">+ Event</button>
+    </div>
+</div>
+<br><br>
+<mat-form-field appearance="fill" style="margin: 5px 0px 0px 30px;">
+    <mat-label>Filter</mat-label>
+    <mat-select [(value)]="selected">
+        <mat-option *ngFor="let ele of filters">{{ele}}</mat-option>
+    </mat-select>
+</mat-form-field>
+<div style="padding: 20px; margin:0px 30px 30px 30px;">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.registerid}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="guest">
+        <th mat-header-cell *matHeaderCellDef> Guest </th>
+        <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.school}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+       
+      
+      
+    </table>
+    </div>
+    <div *ngIf="dataSource==null" style="text-align:center;">No data to be shown</div>
+
+    <ng-template #addevent let-modal>
+        <form #add="ngForm">
+         <div class="modal-header" style="background-color: #354152;">
+           <h2 class="modal-title" style="color: white;">Add Event</h2>
+           <button type="button" style="background-color: red; width: 25px;" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+               <span style="padding: 5px;" aria-hidden="true" style="color: white;">x</span>
+           </button>
+         </div>
+         <div class="modal-body">
+
+            <label for="name" class="form-label">Name</label><br>
+          <input required type="text" id="name" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" ngModel name="name"><br>
+     
+
+                <label for="ld" class="form-label">Link & Date</label>
+                <br>
+                <div class="input-group">
+                    
+                <input required type="text" id = "link" aria-label="link" class="form-control" style="margin: 2px; ;" #link="ngModel" [class.is-invalid]="link.invalid && link.touched" ngModel name="link">
+                <input required type="date" id = "date" aria-label="date" class="form-control" style="margin: 2px;;" #date="ngModel" [class.is-invalid]="date.invalid && date.touched" ngModel name="date">
+              </div>
+           <br>
+          
+          
+          <label for="school" class="form-label">School</label><br>
+          <input required type="text" #school="ngModel" [class.is-invalid]="school.invalid && school.touched"  id="school" class="form-control" ngModel name="school"><br>
+     
+
+          <label for="ld" class="form-label">Queries Contact</label>
+          <br>
+          <div class="input-group">
+          <input required type="text" placeholder = "Mail" aria-label="mail" class="form-control" style="margin: 2px; ;" #mail="ngModel" [class.is-invalid]="mail.invalid && mail.touched" ngModel name="mail">
+          <input required type="number" placeholder = "Phone Number" aria-label="phone" class="form-control" style="margin: 2px;;" #num="ngModel" [class.is-invalid]="num.invalid && num.touched" ngModel name="num">
+        </div>
+     <br>
+ 
+     
+     <label for="guest" class="form-label">Guest</label><br>
+     <input required type="text" id="guest" #guest="ngModel" [class.is-invalid]="guest.invalid && guest.touched" class="form-control" ngModel name="guest"><br>
+        
+          <div class="input-group">
+            <span class="input-group-text">Description</span>
+            <textarea required id = "des" aria-label="Description" #des="ngModel" [class.is-invalid]="des.invalid && des.touched" class="form-control" ngModel name="des"></textarea>
+          </div>
+        
+        </div>
+         <div class="modal-footer">
+           <button type="submit" [disabled]="add.invalid" style="background-color: green;" class="btn btn-light" (click)="modal.close('Close click')"><span style="color:white;">Add</span></button>
+         </div>
+        </form>
+       </ng-template>
