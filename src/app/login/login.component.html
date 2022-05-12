@@ -12,11 +12,13 @@
 
   <div class="grid align__item">
 
-    <div class="register">
+  <div class="register">
 
 <img src="https://vitap.ac.in/wp-content/themes/vit/assets/images/formlogo.png" width="300px">
 <br><br>
 
+  <mat-tab-group>
+    <mat-tab label="Admin"> <br>
       <form action="" method="post" class="form">
 
         <div class="form__field">
@@ -28,10 +30,46 @@
         </div>
         <br>
         <div class="form__field">
-          <input type="submit" value="Login">
+          <input type="submit" value="Login" (click)="goadmin()">
         </div>
 
       </form>
+    </mat-tab>
+    <mat-tab label="Faculty"><br>
+      <form action="" method="post" class="form">
+
+        <div class="form__field">
+          <input type="email" placeholder="Enter Username">
+        </div>
+
+        <div class="form__field">
+          <input type="password" placeholder="Enter Password">
+        </div>
+        <br>
+        <div class="form__field">
+          <input type="submit" value="Login" (click)="gofac()">
+        </div>
+
+      </form>
+    </mat-tab>
+    <mat-tab label="Dean"> <br>
+      <form action="" method="post" class="form">
+
+        <div class="form__field">
+          <input type="email" placeholder="Enter Username">
+        </div>
+
+        <div class="form__field">
+          <input type="password" placeholder="Enter Password">
+        </div>
+        <br>
+        <div class="form__field">
+          <input type="submit" value="Login" (click)="godean()">
+        </div>
+
+      </form>
+    </mat-tab>
+  </mat-tab-group>
 
       <p>Forgot password? <br> <a href="#">Click here</a></p>
 

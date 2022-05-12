@@ -1,13 +1,13 @@
 <app-nav></app-nav>
-<div style="margin:15px">
+<div style="margin:15px;  background: #eee;">
     <div class="float-left">
-        <span style="font-size: 24px;">Events</span>
     </div>
     <div class="float-right">
       <button mat-raised-button color="primary" style="margin-right: 10px;" (click)="openVerticallyCentered(addevent)">+ Event</button>
     </div>
 </div>
 <br><br>
+<app-dashboard></app-dashboard>
 <mat-form-field appearance="fill" style="margin: 5px 0px 0px 30px;">
     <mat-label>Filter</mat-label>
     <mat-select [(value)]="selected">
