@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { SharedserviceService } from '../sharedservice.service';
 import { ToastrService } from 'ngx-toastr';
 import { FacultyProfileComponent } from '../faculty-profile/faculty-profile.component';
+import { EventmodalComponent } from './event/eventmodal/eventmodal.component';
 
 @Component({
   selector: 'app-faculty',
@@ -12,11 +13,6 @@ import { FacultyProfileComponent } from '../faculty-profile/faculty-profile.comp
   styleUrls: ['./faculty.component.scss']
 })
 export class FacultyComponent implements OnInit {
-
-  displayedColumns: string[] = ['name', 'date', 'guest', 'status'];
-  dataSource:any=null;
-  filters=['Approved','Unapproved','Waiting for Approval'];
-  selected="none";
 
   constructor(private shared:SharedserviceService,
     private modalService:NgbModal,
@@ -26,9 +22,9 @@ export class FacultyComponent implements OnInit {
    config.keyboard=false;
   }
 
-  openVerticallyCentered(content:any) {
-     this.modalService.open(content, { centered: true });
-}
+  openeventmodal() {
+     this.modalService.open(EventmodalComponent, { centered: true,scrollable:true });
+  }
 
   ngOnInit(): void {
   }

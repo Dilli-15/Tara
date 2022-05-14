@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FacultyProfileComponent } from '../faculty-profile/faculty-profile.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -9,11 +10,14 @@ import { FacultyProfileComponent } from '../faculty-profile/faculty-profile.comp
 })
 export class NavComponent implements OnInit {
 
-  constructor(private modalservice:NgbModal) { }
+  constructor(private modalservice:NgbModal, private router:Router) { }
 
   ngOnInit(): void {
   }
  openprofile(){
    this.modalservice.open(FacultyProfileComponent,{centered:true,size:'xl',scrollable:true});
+ }
+ facdash(){
+  this.router.navigate(["/faculty"]);
  }
 }

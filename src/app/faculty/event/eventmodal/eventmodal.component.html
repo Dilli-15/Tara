@@ -1,0 +1,100 @@
+
+<form #add="ngForm">
+     <div class="modal-header" style="background-color: #354152;">
+       <h2 class="modal-title" style="color: white;">Add Event</h2>
+       <button type="button" style="background-color: red; width: 25px;" class="btn-close" aria-label="Close" (click)="closemodal()">
+           <span style="padding: 5px;" aria-hidden="true" style="color: white;">x</span>
+       </button>
+     </div>
+     <div class="modal-body">
+      <label for="Role" class="form-label">Role</label><br>
+      <select class="form-select form-control" #role required aria-label="Role"  (change)="onchange(role.value)" >
+        <option selected value="">Select an option</option>
+        <option *ngFor="let ele of roles" [value]="ele">{{ele}}</option>
+      </select><br>
+    <span [hidden]="none">
+      <label for="ay" class="form-label">Academic-Year</label><br>
+      <input required placeholder="Academic Year" type="text" id="ay" #ay="ngModel" [class.is-invalid]="ay.invalid && ay.touched" class="form-control" ngModel name="ay"><br>
+       
+      <label for="level" class="form-label">Event-level</label><br>
+      <select class="form-select form-control" #level id="level" [value]="level.value" required aria-label="level">
+        <option selected value="None">None</option>
+        <option value="International">International</option>
+        <option value="National">National</option>
+      </select><br>
+
+      <label for="etype" class="form-label">Event-Type</label><br>
+      <select class="form-select form-control" #etype required aria-label="etype">
+        <option selected value="">Select an option</option>
+        <option *ngFor="let ele of eventtype" [value]="ele">{{ele}}</option>
+      </select><br>
+      
+      <span [hidden]="Organized">
+      <label for="co-org1" class="form-label">Co Organizer 1</label><br>
+      <input type="text" placeholder="Co org-1" id="co-org1" #coorg1="ngModel" class="form-control" ngModel name="coorg1"><br>
+
+      <label for="co-org2" class="form-label">Co Organizer 2</label><br>
+      <input type="text" id="co-org2" placeholder="Co org-2" #coorg2="ngModel" class="form-control" ngModel name="coorg2"><br>
+      </span>
+        <label for="title" class="form-label">Event-Title</label><br>
+      <input required type="text" placeholder="Event-Name" id="title" #title="ngModel" [class.is-invalid]="title.invalid && title.touched" class="form-control" ngModel name="title"><br>
+
+      <label for="org" class="form-label">Organization /Institute</label><br>
+      <input required type="text" placeholder="Organization name" id="org" #org="ngModel" [class.is-invalid]="org.invalid && org.touched" class="form-control" ngModel name="org"><br>
+ 
+      <label for="otype" class="form-label">Organization-Type</label><br>
+      <select class="form-select form-control" #otype required aria-label="otype">
+        <option selected value="">Select an option</option>
+        <option *ngFor="let ele of orgtype" [value]="ele">{{ele}}</option>
+      </select><br>
+
+            <label for="ld" class="form-label">From-Date & To-Date</label>
+            <br>
+            <div class="input-group">
+                
+            <input required type="date" id = "from" aria-label="from" class="form-control" style="margin: 2px; ;" #from="ngModel" [class.is-invalid]="from.invalid && from.touched" ngModel name="from">
+            <input required type="date" id = "to" aria-label="to" class="form-control" style="margin: 2px;;" #to="ngModel" [class.is-invalid]="to.invalid && to.touched" ngModel name="to">
+          </div>
+       <br>
+       
+       <span [hidden]="Organized">
+       <label for="nop" class="form-label">No of Participants</label><br>
+      <input required type="text" placeholder="0" id="nop" #nop="ngModel" [class.is-invalid]="nop.invalid && nop.touched" class="form-control" ngModel name="nop"><br>
+      
+      <label for="intstu" class="form-label">Internal Students</label><br>
+      <input required type="text" placeholder="0" id="intstu" #intstu="ngModel" [class.is-invalid]="intstu.invalid && intstu.touched" class="form-control" ngModel name="intstu"><br>
+      
+      <label for="Exttstu" class="form-label">External Students</label><br>
+      <input required type="text" placeholder="0" id="extstu" #extstu="ngModel" [class.is-invalid]="extstu.invalid && extstu.touched" class="form-control" ngModel name="extstu"><br>
+      
+      <label for="intfac" class="form-label">Internal Faculty</label><br>
+      <input required type="text" placeholder="0" id="intfac" #intfac="ngModel" [class.is-invalid]="intfac.invalid && intfac.touched" class="form-control" ngModel name="intfac"><br>
+      
+      <label for="extfac" class="form-label">EXternal Faculty</label><br>
+      <input required type="text" placeholder="0" id="extfac" #extfac="ngModel" [class.is-invalid]="extfac.invalid && extfac.touched" class="form-control" ngModel name="extfac"><br>
+      
+      <label for="exp" class="form-label">Total Expenditure</label><br>
+      <input required type="text" placeholder="0" id="exp" #exp="ngModel" [class.is-invalid]="exp.invalid && exp.touched" class="form-control" ngModel name="exp"><br>
+      
+      <label for="rev" class="form-label">Revenue From the Event</label><br>
+      <input required type="text" placeholder="0" id="rev" #rev="ngModel" [class.is-invalid]="rev.invalid && rev.touched" class="form-control" ngModel name="rev"><br>
+      
+      <label for="expsu" class="form-label">Expenditure shared by University</label><br>
+      <input required type="text" placeholder="0" id="expsu" #expsu="ngModel" [class.is-invalid]="expsu.invalid && expsu.touched" class="form-control" ngModel name="expsu"><br>
+      
+      <label for="expss" class="form-label">Expenditure shared by Sponsors</label><br>
+      <input required type="text" placeholder="0" id="expss" #expss="ngModel" [class.is-invalid]="expss.invalid && expss.touched" class="form-control" ngModel name="expss"><br>
+      
+      </span>
+
+       <label for="proof" class="form-label">Proof</label><br>
+      <input type="file" id="proof" #proof="ngModel" ngModel name="proof"><br>
+      </span>
+      
+    
+    </div>
+     <div class="modal-footer">
+       <button type="submit" [disabled]="add.invalid" style="background-color: green;" class="btn btn-light" (click)="closemodal()"><span style="color:white;">Add</span></button>
+     </div>
+    </form>
+  

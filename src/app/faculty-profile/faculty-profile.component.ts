@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplateRef, ViewChild } from '@angular/core';
+import {ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 interface Experience{
@@ -17,11 +16,10 @@ interface Experience{
 })
 export class FacultyProfileComponent implements OnInit {
   @ViewChild('content', { static: true }) 
-  content: TemplateRef<any> | undefined;
   exp:Experience[]=[];
   edit:boolean=false;
 
-  constructor(private modalService:NgbModal,config:NgbModalConfig, private activeModal: NgbActiveModal) {
+  constructor(private activeModal: NgbActiveModal) {
    }
 
   ngOnInit(): void {

@@ -23,6 +23,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { DeanComponent } from './dean/dean.component';
 import { DashboardComponent } from './faculty/dashboard/dashboard.component';
 import { FacultyProfileComponent } from './faculty-profile/faculty-profile.component';
+import { EventComponent } from './faculty/event/event.component';
+import { EventmodalComponent } from './faculty/event/eventmodal/eventmodal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import { FacultyProfileComponent } from './faculty-profile/faculty-profile.compo
     NavComponent,
     DeanComponent,
     DashboardComponent,
-    FacultyProfileComponent
+    FacultyProfileComponent,
+    EventComponent,
+    EventmodalComponent
   ],
   imports: [
     BrowserModule,
