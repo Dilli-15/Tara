@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FacultyProfileComponent } from '../faculty-profile/faculty-profile.component';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalservice:NgbModal) { }
 
   ngOnInit(): void {
   }
-
+ openprofile(){
+   this.modalservice.open(FacultyProfileComponent,{centered:true,size:'xl',scrollable:true});
+ }
 }

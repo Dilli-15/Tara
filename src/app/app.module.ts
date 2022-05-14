@@ -22,6 +22,7 @@ import { NavComponent } from './nav/nav.component';
 import {MatSelectModule} from '@angular/material/select';
 import { DeanComponent } from './dean/dean.component';
 import { DashboardComponent } from './faculty/dashboard/dashboard.component';
+import { FacultyProfileComponent } from './faculty-profile/faculty-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { DashboardComponent } from './faculty/dashboard/dashboard.component';
     FacultyComponent,
     NavComponent,
     DeanComponent,
-    DashboardComponent
+    DashboardComponent,
+    FacultyProfileComponent
   ],
   imports: [
     BrowserModule,

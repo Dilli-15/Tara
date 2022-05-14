@@ -94,7 +94,7 @@
      <label for="name" class="form-label">Name</label><br>
      <input required type="text" id="name" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" ngModel name="name"><br>
      
-     <label for="email" class="form-label">Email</label><br>
+     <label for="email" class="form-label">Vitap-Email</label><br>
      <input required type="text" #mail="ngModel" [class.is-invalid]="mail.invalid && mail.touched"  id="email" class="form-control" ngModel name="email"><br>
 
      <label for="pass" class="form-label">Password</label><br>
@@ -105,6 +105,9 @@
 
      <label for="school" class="form-label">School</label><br>
      <input required type="text" #school="ngModel" [class.is-invalid]="school.invalid && school.touched" id="school" class="form-control" ngModel name="school"><br>
+
+     <label for="Grade" class="form-label">Position & Grade</label><br>
+     <input required type="text" #grade="ngModel" [class.is-invalid]="grade.invalid && grade.touched" id="grade" class="form-control" ngModel name="grade"><br>
     </div>
     <div class="modal-footer">
       <button type="submit" [disabled]="add.invalid" style="background-color: green;" class="btn btn-light" (click)="modal.close('Close click')"><span style="color:white;">Add</span></button>

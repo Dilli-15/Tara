@@ -1,4 +1,4 @@
-#team {
+#apro {
 
 }
 
@@ -27,7 +27,7 @@ section .section-title {
     text-transform: uppercase;
 }
 
-#team .card {
+#apro .card {
     border: none;
     background: #ffffff;
 }
@@ -39,7 +39,7 @@ section .section-title {
     -o-transform: rotateY(0deg);
     -ms-transform: rotateY(0deg);
     transform: rotateY(0deg);
-    border-radius: .25rem;
+    border-radius: .5rem;
 }
 
 .image-flip:hover .frontside,
@@ -88,6 +88,7 @@ section .section-title {
 
 .frontside,
 .backside {
+    border-radius: 30% !important;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -ms-backface-visibility: hidden;
@@ -106,6 +107,7 @@ section .section-title {
 
 .frontside .card,
 .backside .card {
+    border-radius: 30% !important;
     background-color: #2c343f !important;
     margin-right:5px;
     width:250px;

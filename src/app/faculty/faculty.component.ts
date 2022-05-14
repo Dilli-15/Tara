@@ -4,6 +4,7 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { SharedserviceService } from '../sharedservice.service';
 import { ToastrService } from 'ngx-toastr';
+import { FacultyProfileComponent } from '../faculty-profile/faculty-profile.component';
 
 @Component({
   selector: 'app-faculty',
@@ -31,5 +32,4 @@ export class FacultyComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

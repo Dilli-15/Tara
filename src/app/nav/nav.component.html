@@ -1,14 +1,14 @@
 <nav class="navbar" style="background-color: #354152;">
-    <a class="navbar-brand" href="#">
+    <span class="navbar-brand" href="#">
       <img src="https://vitap.ac.in/wp-content/themes/vit/assets/images/formlogo.png" width="100" height="50" alt="vitap">
       <span class="brand-name" style="color: white; font-size:21px">  | Event Management System</span>
       <span style=" position:absolute; right: 0;">
-      <span class="badge rounded-pill" id="name" style=" background-color: #f1f1f1; color: #0e3570;">
+      <button class="badge rounded-pill"><span id="name" style=" background-color: #f1f1f1; color: #0e3570;" (click)="openprofile()">
         Admin
-      </span>
+      </span></button>
       <button mat-icon-button id="logbutt" style="color:white;">
         <mat-icon>exit_to_app</mat-icon>
       </button>
       </span>
-    </a>
+    </span>
   </nav>
