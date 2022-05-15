@@ -5,6 +5,7 @@ import { DeanComponent } from './dean/dean.component';
 import { FacultyProfileComponent } from './faculty-profile/faculty-profile.component';
 import { EventComponent } from './faculty/event/event.component';
 import { FacultyComponent } from './faculty/faculty.component';
+import { PublicationsComponent } from './faculty/publications/publications.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'faculty',component:FacultyComponent},
   {path:'dean', component:DeanComponent},
   {path:'faculty/event',component:EventComponent},
+  {path:'faculty/publications',component:PublicationsComponent},
 ];
 
 @NgModule({

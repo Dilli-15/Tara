@@ -7,7 +7,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class EventmodalComponent implements OnInit {
-  
+   
   constructor(private modal:NgbActiveModal) { }
   none:boolean=true;
   Attended:boolean=true;

@@ -1,0 +1,248 @@
+<form #add="ngForm">
+    <div class="modal-header" style="background-color: #354152;">
+        <h2 class="modal-title" style="color: white;">Add Publication</h2>
+        <button type="button" style="background-color: red; width: 25px;" class="btn-close" aria-label="Close" (click)="closemodal()">
+            <span style="padding: 5px;" aria-hidden="true" style="color: white;">x</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <label for="type" class="form-label">Type</label><br>
+        <select class="form-select form-control" #type required aria-label="type" (change)="onchange(type.value)">
+          <option selected value="">Select an option</option>
+          <option *ngFor="let ele of types" [value]="ele">{{ele}}</option>
+        </select><br>
+        <span [hidden]="disnone">
+        <div class="Journal" [hidden]="hidjou">
+            <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                     <b> Paper Details</b>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+
+                  <label for="py" class="form-label">Publication-Year</label><br>
+                  <input [required]="!hidjou" placeholder="Publication Year" type="number" min="1980" minlength="4" maxlength="4" id="py" #py="ngModel" [class.is-invalid]="py.invalid && py.touched" class="form-control" ngModel name="py"><br>
+                  
+                  <label for="level" class="form-label">Publication-level</label><br>
+                  <select class="form-select form-control" #level id="level" [value]="level.value" [required]="!hidjou" aria-label="level">
+                    <option selected value="None">None</option>
+                    <option value="International">International</option>
+                    <option value="National">National</option>
+                  </select><br>
+
+                  <label for="title" class="form-label">Paper-Title</label><br>
+                  <input [required]="!hidjou" type="text" placeholder="Paper-Name" id="title" #title="ngModel" [class.is-invalid]="title.invalid && title.touched" class="form-control" ngModel name="title"><br>
+                  
+                  <label for="Aname" class="form-label">Author(s) Name</label><br>
+                  <input [required]="!hidjou" type="text" placeholder="Author(s) Name" id="Aname" #Aname="ngModel" [class.is-invalid]="Aname.invalid && Aname.touched" class="form-control" ngModel name="Aname"><br>
+                  
+                  <label for="Jname" class="form-label">Journal Name</label><br>
+                  <input [required]="!hidjou" type="text" placeholder="Journal Name" id="Jname" #Jname="ngModel" [class.is-invalid]="Jname.invalid && Jname.touched" class="form-control" ngModel name="Jname"><br>
+                  
+                  <label for="issn" class="form-label">ISSN No</label><br>
+                  <input [required]="!hidjou" type="text" placeholder="ISSN No" id="issn" #issn="ngModel" [class.is-invalid]="issn.invalid && issn.touched" class="form-control" ngModel name="issn"><br>
+                  
+                  <label for="eissn" class="form-label">e-ISSN No</label><br>
+                  <input type="text" placeholder="e-ISSN No" id="eissn" #eissn="ngModel" class="form-control" ngModel name="eissn"><br>
+                  
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                       <b> Issue Details</b>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                     
+                  <label for="vol" class="form-label">Volume No / Article No</label><br>
+                  <input [required]="!hidjou" type="text" placeholder="Volume No / Article No" id="vol" #vol="ngModel" [class.is-invalid]="vol.invalid && vol.touched" class="form-control" ngModel name="vol"><br>
+                  
+                  <label for="issueno" class="form-label">Issue No</label><br>
+                  <input [required]="!hidjou" type="text" placeholder="Issue No" id="issueno" #issueno="ngModel" [class.is-invalid]="issueno.invalid && issueno.touched" class="form-control" ngModel name="issueno"><br>
+                  
+                  <label for="sp" class="form-label">Start Page</label><br>
+                  <input [required]="!hidjou" type="text" placeholder="Start Page" id="sp" #sp="ngModel" [class.is-invalid]="sp.invalid && sp.touched" class="form-control" ngModel name="sp"><br>
+                  
+                  <label for="ep" class="form-label">End Page</label><br>
+                  <input [required]="!hidjou" type="text" placeholder="End Page" id="ep" #ep="ngModel" [class.is-invalid]="ep.invalid && ep.touched" class="form-control" ngModel name="ep"><br>
+
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                       <b> Indexed Details</b>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    
+                  <label for="wos" class="form-label">Web of Science</label><br>
+                  <select class="form-select form-control" #wos id="wos" [value]="wos.value" [required]="!hidjou" aria-label="wos">
+                    <option selected value="None">None</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select><br>
+
+                  <label for="pm" class="form-label">Pub Med</label><br>
+                  <select class="form-select form-control" #pm id="pm" [value]="pm.value" [required]="!hidjou" aria-label="pm">
+                    <option selected value="None">None</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select><br>
+
+                  <label for="ieee" class="form-label">IEEE</label><br>
+                  <select class="form-select form-control" #ieee id="ieee" [value]="ieee.value" [required]="!hidjou" aria-label="ieee">
+                    <option selected value="None">None</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select><br>
+                  
+                  <label for="ici" class="form-label">ICI</label><br>
+                  <select class="form-select form-control" #ici id="ici" [value]="ici.value" [required]="!hidjou" aria-label="ici">
+                    <option selected value="None">None</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select><br>
+                  
+                  <label for="gs" class="form-label">Google Scholar</label><br>
+                  <select class="form-select form-control" #gs id="gs" [value]="gs.value" [required]="!hidjou" aria-label="gs">
+                    <option selected value="None">None</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select><br>
+                
+                  <label for="ugs" class="form-label">Is the paper coauthored by UG Student(s)?</label><br>
+                  <select class="form-select form-control" #ugs id="ugs" [value]="ugs.value" [required]="!hidjou" aria-label="ugs">
+                    <option selected value="None">None</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select><br>
+
+                  <label for="pgs" class="form-label">Is the paper coauthored by PG Student(s)?</label><br>
+                  <select class="form-select form-control" #pgs id="pgs" [value]="pgs.value" [required]="!hidjou" aria-label="pgs">
+                    <option selected value="None">None</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select><br>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+
+        </div>
+        <div class="Conference" [hidden]="hidcon">
+           <label for="cpy" class="form-label">Publication-Year</label><br>
+           <input [required]="!hidcon" placeholder="Publication Year" type="number" min="1980" minlength="4" maxlength="4" id="cpy" #cpy="ngModel" [class.is-invalid]="cpy.invalid && cpy.touched" class="form-control" ngModel name="cpy"><br>
+                  
+           <label for="clevel" class="form-label">Publication-level</label><br>
+           <select class="form-select form-control" #clevel id="clevel" [value]="clevel.value" [required]="!hidcon" aria-label="level">
+             <option selected value="None">None</option>
+             <option value="International">International</option>
+             <option value="National">National</option>
+           </select><br>
+
+           <label for="ctype" class="form-label">Content-Type</label><br>
+           <select class="form-select form-control" #ctype [value]="ctype.value" [required]="!hidcon" aria-label="ctype">
+              <option selected value="">Select an option</option>
+              <option *ngFor="let ele of contenttype" [value]="ele">{{ele}}</option>
+            </select><br>
+
+           <label for="ctitle" class="form-label">Content/Paper Title</label><br>
+           <input [required]="!hidcon" type="text" placeholder="Title of content" id="ctitle" #ctitle="ngModel" [class.is-invalid]="ctitle.invalid && ctitle.touched" class="form-control" ngModel name="ctitle"><br>
+           
+           <label for="isbn" class="form-label">ISBN No</label><br>
+           <input [required]="!hidcon" type="text" placeholder="ISBN No" id="isbn" #isbn="ngModel" [class.is-invalid]="isbn.invalid && isbn.touched" class="form-control" ngModel name="isbn"><br>
+                  
+           <label for="cAname" class="form-label">Author(s) Name</label><br>
+           <input [required]="!hidcon" type="text" placeholder="Author(s) Name" id="cAname" #cAname="ngModel" [class.is-invalid]="cAname.invalid && cAname.touched" class="form-control" ngModel name="cAname"><br>
+           
+           <label for="pname" class="form-label">Publisher Name</label><br>
+           <input [required]="!hidcon" type="text" placeholder="Publisher Name" id="pname" #pname="ngModel" [class.is-invalid]="pname.invalid && pname.touched" class="form-control" ngModel name="pname"><br>
+            
+        </div>
+        <div class="patent" [hidden]="hidpat">
+            <label for="ay" class="form-label">Academic-Year</label><br>
+            <input [required]="!hidpat" placeholder="Publication Year" type="text" id="ay" #ay="ngModel" [class.is-invalid]="ay.invalid && ay.touched" class="form-control" ngModel name="ay"><br>
+            
+            <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                     First Applicant
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <input [required]="!hidpat" placeholder="ERP ID" type="text" id="id1" #id1="ngModel" [class.is-invalid]="id1.invalid && id1.touched" class="form-control" ngModel name="id1"><br>
+                  <input [required]="!hidpat" placeholder="Applicant Name" type="text" id="name1" #name1="ngModel" [class.is-invalid]="name1.invalid && name1.touched" class="form-control" ngModel name="name1"><br>
+                  <select class="form-select form-control" #school1 [value]="school1.value" [required]="!hidpat" aria-label="school1">
+                    <option selected value="">Select School</option>
+                    <option *ngFor="let ele of schools" [value]="ele">{{ele}}</option>
+                  </select><br>
+                  </mat-expansion-panel>
+                  <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                       Second Applicant (Optional)
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <input placeholder="ERP ID" type="text" id="id2" #id2="ngModel" class="form-control" ngModel name="id2"><br>
+                    <input placeholder="Applicant Name" type="text" id="name2" #name2="ngModel" class="form-control" ngModel name="name2"><br>
+                    <select class="form-select form-control" #school2 [value]="school2.value" aria-label="school2">
+                      <option selected value="">Select School</option>
+                      <option *ngFor="let ele of schools" [value]="ele">{{ele}}</option>
+                    </select><br>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                           Third Applicant (Optional)
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <input placeholder="ERP ID" type="text" id="id3" #id3="ngModel" class="form-control" ngModel name="id3"><br>
+                        <input placeholder="Applicant Name" type="text" id="name3" #name3="ngModel" class="form-control" ngModel name="name3"><br>
+                        <select class="form-select form-control" #school3 [value]="school3.value" aria-label="school3">
+                          <option selected value="">Select School</option>
+                          <option *ngFor="let ele of schools" [value]="ele">{{ele}}</option>
+                        </select><br>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                               Forth Applicant (Optional)
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <input placeholder="ERP ID" type="text" id="id4" #id4="ngModel" class="form-control" ngModel name="id4"><br>
+                            <input placeholder="Applicant Name" type="text" id="name4" #name4="ngModel" class="form-control" ngModel name="name4"><br>
+                            <select class="form-select form-control" #school4 [value]="school4.value" aria-label="school4">
+                              <option selected value="">Select School</option>
+                              <option *ngFor="let ele of schools" [value]="ele">{{ele}}</option>
+                            </select><br>
+                            </mat-expansion-panel>
+                  </mat-accordion>
+                  <label for="ptitle" class="form-label" style="margin-top: 15px;">Patent Title</label><br>
+                  <input [required]="!hidpat" type="text" placeholder="Patent Title" id="ptitle" #ptitle="ngModel" [class.is-invalid]="ptitle.invalid && ptitle.touched" class="form-control" ngModel name="ptitle"><br>
+                  <label for="appno" class="form-label">Application No</label><br>
+                  <input [required]="!hidpat" type="text" placeholder="Application No" id="appno" #appno="ngModel" [class.is-invalid]="appno.invalid && appno.touched" class="form-control" ngModel name="appno"><br>
+                  <label for="country" class="form-label">Country Applied</label><br>
+                  <input [required]="!hidpat" type="text" placeholder="Country" id="con" #con="ngModel" [class.is-invalid]="con.invalid && con.touched" class="form-control" ngModel name="con"><br>
+                  <label for="Filed date" class="form-label">Filled Date</label><br>
+                  <input [required]="!hidpat" type="date" id="adate" #adate="ngModel" [class.is-invalid]="adate.invalid && adate.touched" class="form-control" ngModel name="adate"><br>
+                  <label for="status" class="form-label">Filed Status</label><br>
+                  <select class="form-select form-control" #status id="status" [value]="status.value" [required]="!hidpat" aria-label="status">
+                    <option selected value="">None</option>
+                    <option value="Filed">Filed</option>
+                    <option value="Published">Published</option>
+                    <option value="Granted">Granted</option>
+                  </select><br>
+                  <label for="pno" class="form-label">Patent Number (required if Granted is selected, 0 if not)</label><br>
+                  <input [required]="!hidpat" type="text" placeholder="Patent No" id="pno" #pno="ngModel" [class.is-invalid]="pno.invalid && pno.touched" class="form-control" ngModel name="pno"><br>
+                  <label for="Adate" class="form-label">Date Awarded (required if Granted is selected)</label><br>
+                  <input type="date" id="Adate" #Adate="ngModel" [class.is-invalid]="Adate.invalid && Adate.touched" class="form-control" ngModel name="Adate"><br>
+                 
+        </div>
+        <label for="proof" class="form-label">Proof</label><br>
+      <input type="file" id="proof" #proof="ngModel" ngModel name="proof"><br>
+      </span>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" [disabled]="add.invalid || type.value==''" style="background-color: green;" class="btn btn-light" (click)="closemodal()"><span style="color:white;">Add</span></button>
+    </div>
+</form>
+
+

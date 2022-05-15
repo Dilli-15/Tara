@@ -25,6 +25,9 @@ import { DashboardComponent } from './faculty/dashboard/dashboard.component';
 import { FacultyProfileComponent } from './faculty-profile/faculty-profile.component';
 import { EventComponent } from './faculty/event/event.component';
 import { EventmodalComponent } from './faculty/event/eventmodal/eventmodal.component';
+import { PublicationsComponent } from './faculty/publications/publications.component';
+import { PublicationmodalComponent } from './faculty/publications/publicationmodal/publicationmodal.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,10 @@ import { EventmodalComponent } from './faculty/event/eventmodal/eventmodal.compo
     DashboardComponent,
     FacultyProfileComponent,
     EventComponent,
-    EventmodalComponent
+    EventmodalComponent,
+    PublicationsComponent,
+    PublicationmodalComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,8 @@ import { EventmodalComponent } from './faculty/event/eventmodal/eventmodal.compo
       preventDuplicates: true,
     }),
     MatTabsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule
 
   ],
   providers: [SharedserviceService],

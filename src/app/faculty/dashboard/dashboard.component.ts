@@ -15,5 +15,8 @@ export class DashboardComponent implements OnInit {
   openevent(){
     this.router.navigate(['/faculty/event']);
   }
+  openpublications(){
+    this.router.navigate(['/faculty/publications'])
+  }
 
 }
