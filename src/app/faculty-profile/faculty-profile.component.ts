@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { SharedserviceService } from '../sharedservice.service';
+
 
 interface Experience{
  company:string,
@@ -16,29 +19,80 @@ interface Experience{
 })
 export class FacultyProfileComponent implements OnInit {
   @ViewChild('content', { static: true }) 
-  exp:Experience[]=[];
+  exp:any;
   edit:boolean=false;
+  data:any={name:" ",
+  phonenumber:" ",
+  school: "",
+  position: "",
+  personalEmail: "",
+  address1: "",
+  address2: "",
+  city: "",
+  postalCode: "",
+  state: "",
+  country: "",
+  image:" "
+  };
 
-  constructor(private activeModal: NgbActiveModal) {
-   }
+  constructor(private activeModal: NgbActiveModal,private shared:SharedserviceService, private toastr:ToastrService) {}
 
   ngOnInit(): void {
+    this.getfacbid();
+    this.getexperience();
   }
+
   addele(data:any,add:NgForm){
+    
    let temp={
+        uid:localStorage.getItem("currentuser"),
+        registerId:data.registerId,
         company:data.company,
         role:data.role,
         from:data.from,
         to:data.to
     };
     this.exp.push(temp);
+    this.shared.addexp(temp).subscribe(res=>{
+
+    })
     add.resetForm();
+  }
+  getexperience(){
+    this.shared.getexp(localStorage.getItem("currentuser")).subscribe(res=>{
+      this.exp=res;
+    })
   }
   editp(){
     this.edit=true;
   }
   closemodal(){
     this.activeModal.close("Closed");
+  }
+  getfacbid(){
+    this.shared.getfacbid(localStorage.getItem("currentuser")).subscribe(res=>{
+      this.data=res;
+    });
+    this.getexperience();
+  }
+  editfac(data:any){
+    let dat={
+            name:data.name,
+            phonenumber:data.phone,
+            school:this.data.school,
+            position:this.data.position,
+            personalEmail:data.pemail,
+            address1:data.add1,
+            address2:data.add2,
+            city:data.city,
+            postalCode:data.post,
+            state:data.state,
+            country:data.country,
+            image:" "
+    }
+    this.shared.editfaculty(dat,localStorage.getItem("currentuser")).subscribe(res=>{
+      this.toastr.success(res.toString());
+    })
   }
 
 }

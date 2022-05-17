@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FacultyProfileComponent } from '../faculty-profile/faculty-profile.component';
 import { EventmodalComponent } from './event/eventmodal/eventmodal.component';
 import { PublicationmodalComponent } from './publications/publicationmodal/publicationmodal.component';
+import { FundedprojectmodalComponent } from './fundedprojects/fundedprojectmodal/fundedprojectmodal.component';
 
 @Component({
   selector: 'app-faculty',
@@ -28,6 +29,9 @@ export class FacultyComponent implements OnInit {
   }
   openpublicationmodal(){
     this.modalService.open(PublicationmodalComponent,{centered:true, scrollable:true});
+  }
+  openfpmodal(){
+    this.modalService.open(FundedprojectmodalComponent,{centered:true, scrollable:true});
   }
 
   ngOnInit(): void {

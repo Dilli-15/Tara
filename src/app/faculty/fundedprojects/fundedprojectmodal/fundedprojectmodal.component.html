@@ -1,0 +1,48 @@
+<form #add="ngForm">
+    <div class="modal-header" style="background-color: #354152;">
+        <h2 class="modal-title" style="color: white;">Add Funded Project</h2>
+        <button type="button" style="background-color: red; width: 25px;" class="btn-close" aria-label="Close" (click)="closemodal()">
+            <span style="padding: 5px;" aria-hidden="true" style="color: white;">x</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <label for="ay" class="form-label">Academic-Year</label><br>
+        <input required placeholder="Academic Year" type="text" id="ay" #ay="ngModel" [class.is-invalid]="ay.invalid && ay.touched" class="form-control" ngModel name="ay"><br>
+        
+        <label for="deg" class="form-label">Degree</label><br>
+        <select class="form-select form-control" #deg [value]="deg.value" required aria-label="deg" name="deg">
+           <option selected value="">Select an option</option>
+           <option *ngFor="let ele of degrees" [value]="ele">{{ele}}</option>
+         </select><br>
+
+         <label for="erpid" class="form-label">Organiser ERP ID</label><br>
+         <input required type="text" placeholder="Organiser ERP ID" id="erp1" #erp1="ngModel" [class.is-invalid]="erp1.invalid && erp1.touched" class="form-control" ngModel name="erp1"><br>
+         
+         <label for="erpid2" class="form-label">Co Organiser ERP ID</label><br>
+         <input type="text" placeholder="Co Organiser ERP ID" id="erp2" #erp2="ngModel" [class.is-invalid]="erp2.invalid && erp2.touched" class="form-control" ngModel name="erp2"><br>
+
+         <label for="erpid3" class="form-label">Co Organiser ERP ID</label><br>
+         <input type="text" placeholder="Co Organiser ERP ID" id="erp1" #erp1="ngModel" [class.is-invalid]="erp1.invalid && erp1.touched" class="form-control" ngModel name="erp1"><br>
+         
+         <label for="title" class="form-label">Project Title</label><br>
+         <input required type="text" placeholder="Title" id="tit" #tit="ngModel" [class.is-invalid]="tit.invalid && tit.touched" class="form-control" ngModel name="tit"><br>
+
+         <label for="sd" class="form-label">Start-Date</label><br>
+         <input required type="date" id="sd" #sd="ngModel" [class.is-invalid]="sd.invalid && sd.touched" class="form-control" ngModel name="sd"><br>
+         
+         <label for="ed" class="form-label">End-Date</label><br>
+         <input required type="date" id="ed" #ed="ngModel" [class.is-invalid]="ed.invalid && ed.touched" class="form-control" ngModel name="ed"><br>
+
+         <label for="nos" class="form-label">No of students visited</label><br>
+         <input required type="text" placeholder="0" id="nos" #nos="ngModel" [class.is-invalid]="nos.invalid && nos.touched" class="form-control" ngModel name="nos"><br>
+
+         <label for="nos" class="form-label">List of Reg. No of Students</label><br>
+         <textarea class="form-control" placeholder="List Registration Nos of the participants one below the other. Donot use comma or colon after the registration nos" id="ta" rows="3" #los="ngModel" [class.is-invalid]="los.invalid && los.touched" ngModel name="los"></textarea>
+         
+         <label for="proof" class="form-label">Proof</label><br>
+         <input type="file" id="proof" #proof="ngModel" ngModel name="proof"><br>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" [disabled]="add.invalid" style="background-color: green;" class="btn btn-light" (click)="closemodal()"><span style="color:white;">Add</span></button>
+    </div>
+</form>

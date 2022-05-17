@@ -1,9 +1,11 @@
-    <div class="modal-header" style="background-color: #354152;">
+
+<div class="modal-header" style="background-color: #354152;">
       <h2 class="modal-title" id="modal-basic-title" style="color: white;">Profile</h2>
       <button type="button" style="background-color: red; width: 25px;" class="btn-close" aria-label="Close" (click)="closemodal()">
         <span style="padding: 5px;" aria-hidden="true" style="color: white;">x</span>
       </button>
     </div>
+    <form #facprofile="ngForm" (ngSubmit)="editfac(facprofile.value)">
     <div class="modal-body">
      
         <div class="container rounded bg-white mt-5 mb-5" style="margin-top: 0px !important;">
@@ -12,10 +14,10 @@
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <img class="rounded-circle mt-5" width="150px" src="https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg">
-                        <span class="font-weight-bold">Name</span>
-                        <span class="text-black-50">email@mail.com</span>
-                        <span class="text-black-50">Grade</span>
-                        <span class="text-black-50">School</span>
+                        <span class="font-weight-bold">{{data.name}}</span>
+                        <span class="text-black-50">{{data.email}}</span>
+                        <span class="text-black-50">{{data.position}}</span>
+                        <span class="text-black-50">{{data.school}}</span>
                     </div>
                 </div>
                 <div class="col-md-5 border-right">
@@ -23,41 +25,41 @@
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <label class="labels">Name</label>
-                                <input [disabled]="!edit" required type="text" class="form-control" placeholder="Name" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" ngModel name="name">
+                                <input [disabled]="!edit" required type="text" class="form-control" placeholder="Name" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" [ngModel]="data.name" name="name">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label class="labels">Personal Email ID</label>
-                                <input [disabled]="!edit" type="text" class="form-control" placeholder="enter email id" required #pemail="ngModel" [class.is-invalid]="pemail.invalid && pemail.touched" ngModel name="pemail">
+                                <input [disabled]="!edit" type="text" class="form-control" placeholder="enter email id" required #pemail="ngModel" [class.is-invalid]="pemail.invalid && pemail.touched" [ngModel]="data.personalEmail" name="pemail">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">Mobile Number</label>
-                                <input [disabled]="!edit" type="text" class="form-control" placeholder="enter phone number" required #phone="ngModel" [class.is-invalid]="phone.invalid && phone.touched" ngModel name="phone">
+                                <input [disabled]="!edit" type="text" class="form-control" placeholder="enter phone number" required #phone="ngModel" [class.is-invalid]="phone.invalid && phone.touched" [ngModel]="data.phonenumber" name="phone">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">Address Line 1</label>
-                                <input [disabled]="!edit" type="text" class="form-control" placeholder="enter address line 1" required #add1="ngModel" [class.is-invalid]="add1.invalid && add1.touched" ngModel name="add1">
+                                <input [disabled]="!edit" type="text" class="form-control" placeholder="enter address line 1" required #add1="ngModel" [class.is-invalid]="add1.invalid && add1.touched" [ngModel]="data.address1" name="add1">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">Address Line 2</label>
-                                <input [disabled]="!edit" type="text" class="form-control" placeholder="Colony or Street" required #add2="ngModel" [class.is-invalid]="add2.invalid && add2.touched" ngModel name="add2">
+                                <input [disabled]="!edit" type="text" class="form-control" placeholder="Colony or Street" required #add2="ngModel" [class.is-invalid]="add2.invalid && add2.touched" [ngModel]="data.address2" name="add2">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">City</label>
-                                <input [disabled]="!edit" type="text" class="form-control" required #city="ngModel" [class.is-invalid]="city.invalid && city.touched" ngModel name="city">
+                                <input [disabled]="!edit" type="text" class="form-control" required #city="ngModel" [class.is-invalid]="city.invalid && city.touched" [ngModel]="data.city" name="city">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">Postal Code</label>
-                                <input [disabled]="!edit" type="text" class="form-control" required #post="ngModel" [class.is-invalid]="post.invalid && post.touched" ngModel name="post">
+                                <input [disabled]="!edit" type="text" class="form-control" required #post="ngModel" [class.is-invalid]="post.invalid && post.touched" [ngModel]="data.postalCode" name="post">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">State</label>
-                                <input [disabled]="!edit" type="text" class="form-control" required #state="ngModel" [class.is-invalid]="state.invalid && state.touched" ngModel name="state">
+                                <input [disabled]="!edit" type="text" class="form-control" required #state="ngModel" [class.is-invalid]="state.invalid && state.touched" [ngModel]="data.state" name="state">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">Country</label>
-                                <input [disabled]="!edit" type="text" class="form-control" required #country="ngModel" [class.is-invalid]="country.invalid && country.touched" ngModel name="country">
+                                <input [disabled]="!edit" type="text" class="form-control" required #country="ngModel" [class.is-invalid]="country.invalid && country.touched" [ngModel]="data.country" name="country">
                             </div>
                         </div>
                     </div>
@@ -115,9 +117,10 @@
 
     </div>
     <div class="modal-footer">
-        <button [hidden]="edit" mat-raised-button color="primary" style="margin-right: 10px; margin-left: 0% !important; position: absolute; left:15px;" (click)="editp()">Edit Profile</button>
+        <button [hidden]="edit" type="button" class="btn" style="background-color: #354152; margin-right: 10px; margin-left: 0% !important; position: absolute; left:15px;" (click)="editp()"><span style="color:white;">Edit Profile</span></button>
         <button [hidden]="edit" style="background-color: green;" type="button" class="btn" (click)="closemodal()"><span style="color:white;">OK</span></button>
-        <button [hidden]="!edit" style="background-color: green;" type="button" class="btn" (click)="closemodal()"><span style="color:white;">Save</span></button>
+        <button [hidden]="!edit" style="background-color: green;" type="submit" class="btn" (click)="closemodal()"><span style="color:white;">Save</span></button>
     </div>
+</form>
 
 

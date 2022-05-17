@@ -28,6 +28,8 @@ import { EventmodalComponent } from './faculty/event/eventmodal/eventmodal.compo
 import { PublicationsComponent } from './faculty/publications/publications.component';
 import { PublicationmodalComponent } from './faculty/publications/publicationmodal/publicationmodal.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { FundedprojectsComponent } from './faculty/fundedprojects/fundedprojects.component';
+import { FundedprojectmodalComponent } from './faculty/fundedprojects/fundedprojectmodal/fundedprojectmodal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +44,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     EventmodalComponent,
     PublicationsComponent,
     PublicationmodalComponent,
+    FundedprojectsComponent,
+    FundedprojectmodalComponent,
     
   ],
   imports: [
@@ -58,9 +62,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot({
-      timeOut: 5000,
-      positionClass: 'toast-bottom-right',
+      timeOut: 2000,
+      progressBar:true,
       preventDuplicates: true,
+      progressAnimation:"increasing",
     }),
     MatTabsModule,
     MatSelectModule,

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { SharedserviceService } from 'src/app/sharedservice.service';
 @Component({
   selector: 'app-eventmodal',
   templateUrl: './eventmodal.component.html',
@@ -8,7 +10,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class EventmodalComponent implements OnInit {
    
-  constructor(private modal:NgbActiveModal) { }
+  constructor(private modal:NgbActiveModal,private shared:SharedserviceService,private toast:ToastrService) { }
   none:boolean=true;
   Attended:boolean=true;
   Organized:boolean=true;
@@ -48,5 +50,55 @@ export class EventmodalComponent implements OnInit {
   }
   closemodal(){
     this.modal.close();
+  }
+  addevent(data:any){
+    if(data.role==="Attended" || data.role==="Delivered"){
+      let dat={
+        role:data.role,
+        academicYear:data.ay,
+        eventLevel:data.level,
+        eventType:data.etype,
+        eventTitle:data.title,
+        organizationName:data.org,
+        organizationType:data.otype,
+        fromDate:data.from,
+        toDate:data.to,
+        proof:" ",
+        uid: localStorage.getItem("currentuser"),
+        registerId:localStorage.getItem("regid")
+      }
+      this.shared.addADevent(dat).subscribe(res=>{
+        this.toast.success("Event added successfully")
+      });
+    }
+    if(data.role==="Organized"){
+      let dat={
+        role:data.role,
+        academicYear:data.ay,
+        eventLevel:data.level,
+        eventType:data.etype,
+        eventTitle:data.title,
+        organizationName:data.org,
+        organizationType:data.otype,
+        fromDate:data.from,
+        toDate:data.to,
+        proof:" ",
+        uid: localStorage.getItem("currentuser"),
+        registerId:localStorage.getItem("regid"),
+        participants:Number(data.nop),
+        internalStudents:Number(data.intstu),
+        externalStudents:Number(data.extstu),
+        internalFaculty:Number(data.intfac),
+        externalFaculty:Number(data.extfac),
+        totalExpendicture:Number(data.exp),
+        revenue:Number(data.rev),
+        expenditureByUniversity:Number(data.expsu),
+        expenditureBySponsors:Number(data.expss)
+      }
+      this.shared.addOevent(dat).subscribe(res=>{
+        this.toast.success("Event added successfully");
+      })
+    }
+    window.location.reload();
   }
 }
