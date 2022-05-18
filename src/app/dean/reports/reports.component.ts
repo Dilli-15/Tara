@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SharedserviceService } from 'src/app/sharedservice.service';
-import { ngxCsv } from 'ngx-csv/ngx-csv';
-import { Workbook } from 'exceljs';
-import * as FileSaver from 'file-saver';
-const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-const EXCEL_EXTENSION = '.xlsx';
+import * as XLSX from 'xlsx';
+import { FileSaverService } from 'ngx-filesaver';
 
 @Component({
   selector: 'app-reports',
@@ -20,7 +17,7 @@ export class ReportsComponent implements OnInit {
   readonly name=localStorage.getItem("name");
    facId:any=localStorage.getItem("facId");
    facdetails:any={name:""};
-  constructor(private router:Router,private shared:SharedserviceService,private toast:ToastrService) { }
+  constructor(private fs:FileSaverService,private router:Router,private shared:SharedserviceService,private toast:ToastrService) { }
 
   ngOnInit(): void {
     this.getfacdetails();
@@ -55,6 +52,24 @@ export class ReportsComponent implements OnInit {
     })
   }
   downloadEvents(){
+    let title=this.facdetails.registerId+"_Events"
+    const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    const worksheet1=XLSX.utils.json_to_sheet(this.attevents);
+    const worksheet2=XLSX.utils.json_to_sheet(this.orgevents);
+    const worksheet3=XLSX.utils.json_to_sheet(this.delevents);
+
+    const workbook={
+      Sheets:{
+        "Attended Events":worksheet1,
+        "Organized Events":worksheet2,
+        "Delivered Events":worksheet3
+      },
+      SheetNames:["Attended Events","Organized Events","Delivered Events"]
+    }
+    const excelbuffer=XLSX.write(workbook,{bookType:'xlsx',type:'array'});
+    const blobdata=new Blob([excelbuffer],{type:EXCEL_TYPE})
+    this.fs.save(blobdata,title);
+
     
   }
 
