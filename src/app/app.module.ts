@@ -30,6 +30,7 @@ import { PublicationmodalComponent } from './faculty/publications/publicationmod
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FundedprojectsComponent } from './faculty/fundedprojects/fundedprojects.component';
 import { FundedprojectmodalComponent } from './faculty/fundedprojects/fundedprojectmodal/fundedprojectmodal.component';
+import { ReportsComponent } from './dean/reports/reports.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { FundedprojectmodalComponent } from './faculty/fundedprojects/fundedproj
     PublicationmodalComponent,
     FundedprojectsComponent,
     FundedprojectmodalComponent,
+    ReportsComponent,
     
   ],
   imports: [

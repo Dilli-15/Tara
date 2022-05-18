@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { DeanComponent } from './dean/dean.component';
-import { FacultyProfileComponent } from './faculty-profile/faculty-profile.component';
+import { ReportsComponent } from './dean/reports/reports.component';
 import { EventComponent } from './faculty/event/event.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { FundedprojectsComponent } from './faculty/fundedprojects/fundedprojects.component';
@@ -16,7 +16,8 @@ const routes: Routes = [
   {path:'dean', component:DeanComponent},
   {path:'faculty/event',component:EventComponent},
   {path:'faculty/publications',component:PublicationsComponent},
-  {path:"faculty/fundedprojects",component:FundedprojectsComponent}
+  {path:"faculty/fundedprojects",component:FundedprojectsComponent},
+  {path:"dean/reports",component:ReportsComponent}
 ];
 
 @NgModule({

@@ -15,6 +15,7 @@ export class DeanComponent implements OnInit {
   displayedColumns1: string[] = ['Event', 'date', 'School', 'guest','Actions'];
   dataSource:any=null;
   faculty:any[] | undefined;
+  unfiltered:any[]=[];
   constructor(private shared:SharedserviceService, private toast:ToastrService, private router:Router) {
    }
   
@@ -30,6 +31,21 @@ logout(){
 getfac(){
   this.shared.getfacbs(localStorage.getItem("school")).subscribe(res=>{
     this.faculty=res;
-  })
+    this.unfiltered=res;
+  });
+}
+filter(data:any){
+   this.faculty=this.unfiltered.filter(function(val){
+     return val.registerId.toString().toLowerCase().includes(
+       data.toString().toLowerCase())||
+       val.name.toString().toLowerCase().includes(
+         data.toString().toLowerCase())||
+       val.mail.toString().toLowerCase().includes(
+         data.toString().toLowerCase())
+   });
+}
+facultyrep(data:any){
+  localStorage.setItem("facId",data);
+  this.router.navigate(['dean/reports']);
 }
 }
