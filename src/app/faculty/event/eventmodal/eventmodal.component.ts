@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { SharedserviceService } from 'src/app/sharedservice.service';
+import { SharedserviceService } from 'src/app/sharedservice.service'; 
 @Component({
   selector: 'app-eventmodal',
   templateUrl: './eventmodal.component.html',
@@ -18,6 +18,7 @@ export class EventmodalComponent implements OnInit {
    roles:string[]=["Attended","Organized","Delivered"];
    eventtype:string[]=["Guest Lecture","Conference","Seminar","Symposia","Training Programme","Workshop","Orientation Programme","Refresher Programme","Short Term Course","FDP","MOOC/Online Courses"];
    orgtype:string[]=["Industry","Academic","Research Center/Lab"]
+  file:any="";
   ngOnInit(): void {
   }
    
@@ -63,13 +64,16 @@ export class EventmodalComponent implements OnInit {
         organizationType:data.otype,
         fromDate:data.from,
         toDate:data.to,
-        proof:" ",
+        proof:this.file.name,
         uid: localStorage.getItem("currentuser"),
         registerId:localStorage.getItem("regid")
       }
       this.shared.addADevent(dat).subscribe(res=>{
         this.toast.success("Event added successfully")
       });
+      const fd=new FormData();
+      fd.append('file',this.file);
+      this.shared.uploadfile(fd).subscribe(res=>{});
     }
     if(data.role==="Organized"){
       let dat={
@@ -82,7 +86,7 @@ export class EventmodalComponent implements OnInit {
         organizationType:data.otype,
         fromDate:data.from,
         toDate:data.to,
-        proof:" ",
+        proof:this.file.name,
         uid: localStorage.getItem("currentuser"),
         registerId:localStorage.getItem("regid"),
         participants:Number(data.nop),
@@ -97,8 +101,17 @@ export class EventmodalComponent implements OnInit {
       }
       this.shared.addOevent(dat).subscribe(res=>{
         this.toast.success("Event added successfully");
-      })
+      });
+      const fd=new FormData();
+      fd.append('file',this.file);
+      this.shared.uploadfile(fd).subscribe(res=>{});
     }
     window.location.reload();
+  }
+  onselecting(event:any){
+    if(event.target.files.length>0){
+      let file=event.target.files[0];
+      this.file=file;
+    }
   }
 }

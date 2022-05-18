@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModal,NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { SharedserviceService } from 'src/app/sharedservice.service';
 import { EventmodalComponent } from './eventmodal/eventmodal.component';
@@ -20,7 +21,7 @@ export class EventComponent implements OnInit {
   satt:boolean=true;
   sdeli:boolean=true;
   sorg:boolean=true;
-  constructor(private modal:NgbModal, private config:NgbModalConfig, private shared:SharedserviceService) {
+  constructor(public sanitizer: DomSanitizer, private modal:NgbModal, private config:NgbModalConfig, private shared:SharedserviceService) {
     config.backdrop='static';
    config.keyboard=false;
    }
@@ -60,7 +61,7 @@ export class EventComponent implements OnInit {
          if(res[i].role==="Attended"){
            this.attended.push(res[i]);
          }
-         else{
+         else if(res[i].role==="Delivered"){
            this.delivered.push(res[i]);
          }
        }
@@ -70,5 +71,11 @@ export class EventComponent implements OnInit {
      this.shared.getOevents(localStorage.getItem("currentuser")).subscribe(res=>{
        this.organized=res;
      })
+   }
+   download(data:any){
+     console.log(data);
+     this.shared.getfile(data).subscribe(res=>{
+
+     });
    }
 }

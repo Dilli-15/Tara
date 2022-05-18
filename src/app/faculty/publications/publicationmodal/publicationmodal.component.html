@@ -237,7 +237,7 @@
                  
         </div>
         <label for="proof" class="form-label">Proof</label><br>
-      <input type="file" id="proof" #proof="ngModel" ngModel name="proof"><br>
+      <input type="file" id="proof" required #proof="ngModel" ngModel name="proof" (change)="onselecting($event)"><br>
       </span>
     </div>
     <div class="modal-footer">

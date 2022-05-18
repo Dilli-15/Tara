@@ -1,4 +1,4 @@
-<app-nav></app-nav>
+<app-nav></app-nav> 
 <div style="margin:15px;  background: #eee;">
     <div class="float-left">
        <span style="font-size: 24px;">Events</span> 
@@ -24,6 +24,7 @@
       <th scope="col">Event-Title</th>
       <th scope="col">Event-Type</th>
       <th scope="col">Date</th>
+      <th scope="col">Report</th>
       </tr>
     </thead>
     <tbody>
@@ -33,6 +34,9 @@
         <td>{{ele.eventTitle}}</td>
         <td>{{ele.eventType}}</td>
         <td>{{ele.fromDate}}</td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
+          <mat-icon>cloud_download</mat-icon>
+        </button></td>
       </tr>
       <tr [hidden]="!sdeli" *ngFor="let ele of delivered">
         <td>{{ele.academicYear}}</td>
@@ -40,6 +44,9 @@
         <td>{{ele.eventTitle}}</td>
         <td>{{ele.eventType}}</td>
         <td>{{ele.fromDate}}</td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
+          <mat-icon>cloud_download</mat-icon>
+        </button></td>
       </tr>
       <tr [hidden]="!sorg" *ngFor="let ele of organized">
         <td>{{ele.academicYear}}</td>
@@ -47,6 +54,9 @@
         <td>{{ele.eventTitle}}</td>
         <td>{{ele.eventType}}</td>
         <td>{{ele.fromDate}}</td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
+          <mat-icon>cloud_download</mat-icon>
+        </button></td>
       </tr>
     </tbody>
   </table>

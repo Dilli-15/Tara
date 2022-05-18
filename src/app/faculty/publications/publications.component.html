@@ -21,6 +21,7 @@
       <th scope="col">Year</th>
       <th scope="col">Type</th>
       <th scope="col">Title</th>
+      <th scope="col">Report</th>
       </tr>
     </thead>
     <tbody>
@@ -28,16 +29,25 @@
         <td>{{ele.publicationYear}}</td>
         <td>{{ele.type}}</td>
         <td>{{ele.title}}</td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
+          <mat-icon>cloud_download</mat-icon>
+        </button></td>
       </tr>
       <tr [hidden]="!scon" *ngFor="let ele of con">
         <td>{{ele.publicationYear}}</td>
         <td>{{ele.type}}</td>
         <td>{{ele.contentTitle}}</td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
+          <mat-icon>cloud_download</mat-icon>
+        </button></td>
       </tr>
       <tr [hidden]="!spat" *ngFor="let ele of pat">
         <td>{{ele.academicYear}}</td>
         <td>{{ele.type}}</td>
         <td>{{ele.patentTitle}}</td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
+          <mat-icon>cloud_download</mat-icon>
+        </button></td>
       </tr>
     </tbody>
   </table>

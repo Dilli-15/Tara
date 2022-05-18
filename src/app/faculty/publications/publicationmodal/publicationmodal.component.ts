@@ -11,6 +11,7 @@ export class PublicationmodalComponent implements OnInit {
  
   constructor(private modal:NgbActiveModal, private shared:SharedserviceService, private toast:ToastrService) { }
   types:string[]=["Journal","Conference","Patent"]
+  file:any="";
   disnone:boolean=true;
   hidjou=true;
   hidcon=true;
@@ -71,13 +72,16 @@ export class PublicationmodalComponent implements OnInit {
         isGoogleScholar:data.gs,
         isCoauthByUgStudent:data.ugs,
         isCoauthbyPgStudent:data.pgs,
-        proof:" ",
+        proof:this.file.name,
         uid:localStorage.getItem("currentuser"),
         registerId:localStorage.getItem("regid")
       }
       this.shared.addjournal(dat).subscribe(res=>{
         this.toast.success("Added Successfully");
       });
+      const fd=new FormData();
+      fd.append('file',this.file);
+      this.shared.uploadfile(fd).subscribe(res=>{});
     }
     if(data.type==="Conference"){
       let dat={
@@ -89,13 +93,16 @@ export class PublicationmodalComponent implements OnInit {
         isbnNo:data.isbn,
         authorName:data.cAname,
         publishername:data.pname,
-        proof:" ",
+        proof:this.file.name,
         uid:localStorage.getItem("currentuser"),
         registerId:localStorage.getItem("regid")
       }
       this.shared.addconference(dat).subscribe(res=>{
         this.toast.success("Added Successfully");
-      })
+      });
+      const fd=new FormData();
+      fd.append('file',this.file);
+      this.shared.uploadfile(fd).subscribe(res=>{});
     }
     if(data.type==="Patent"){
       let dat={
@@ -112,13 +119,23 @@ export class PublicationmodalComponent implements OnInit {
         status:data.status,
         patentNo:data.pno,
         awardedDate:data.Adate,
-        proof:" ",
+        proof:this.file.name,
         uid:localStorage.getItem("currentuser"),
         registerId:localStorage.getItem("regid")
       }
       this.shared.addpatent(dat).subscribe(res=>{
         this.toast.success("Added Successfully");
-      })
+      });
+      const fd=new FormData();
+      fd.append('file',this.file);
+      this.shared.uploadfile(fd).subscribe(res=>{});
+    }
+    window.location.reload();
+  }
+  onselecting(event:any){
+    if(event.target.files.length>0){
+      let file=event.target.files[0];
+      this.file=file;
     }
   }
 }

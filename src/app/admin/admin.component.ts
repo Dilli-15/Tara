@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { NgForm } from '@angular/forms';
 import { SharedserviceService } from '../sharedservice.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
   hid:boolean=false;
 
   constructor(private shared:SharedserviceService,
+    private router:Router,
      private modalService:NgbModal,
       config:NgbModalConfig,
       private toast:ToastrService) {
@@ -88,5 +89,7 @@ export class AdminComponent implements OnInit {
     }
     window.location.reload();
   }
-
+  logout(){
+    this.router.navigate([""]);
+  }
 }

@@ -37,6 +37,12 @@ export class SharedserviceService {
   editfaculty(data:any,id:any){
     return this.http.put(this.url+"user/"+id+"/edit",data);
   }
+  uploadimg(data:any){
+    return this.http.post(this.url+"user/image",data);
+  }
+  uploadfile(data:any){
+    return this.http.post(this.url+"files",data);
+  }
   addexp(data:any){
    return this.http.post(this.url+"experience/new",data);
   }
@@ -82,6 +88,13 @@ export class SharedserviceService {
   getfacbs(school:any):Observable<any>{
     return this.http.get(this.url+"user/school/"+school);
   }
-
-
+  getfile(data:any):Observable<any>{
+    return this.http.get(this.url+"download/"+data);
+  }
+  addfundpro(data:any){
+    return this.http.post(this.url+"project//funded/new",data);
+  }
+  getprobfid(id:any):Observable<any>{
+    return this.http.get(this.url+"project/funded/"+id);
+  }
 }

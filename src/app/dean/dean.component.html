@@ -13,35 +13,98 @@
     </span>
   </span>
 </nav>
-<div style="margin:15px;  background: #eee;">
+<!-- <div style="margin:15px;  background: #eee;">
   <div class="float-left">
      <span style="font-size: 24px;">Faculty of {{school}}</span> 
   </div>
 
-</div>
+</div> -->
 <br>
-<div style="padding-top: 20px; margin:0px 30px 0px 30px; max-width: 200px;">
-<input required placeholder="Filter" type="text" id="fil" #fil (keyup)="filter(fil.value)" class="form-control" name="fil"><br>
-</div>
-<div style="padding: 20px; margin:0px 30px 30px 30px;">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-      <th scope="col">Id.</th>
-      <th scope="col">Name</th>
-      <th scope="col">Mail</th>
-      <th scope="col">School</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let ele of faculty" (click)="facultyrep(ele._id)">
-        <td>{{ele.registerId}}</td>
-        <td>{{ele.name}}</td>
-        <td>{{ele.mail}}</td>
-        <td>{{ele.school}}</td>
-      </tr>
-    </tbody>
-    </table>
-</div>
-        
-  
+<span style="font-size: 24px; margin-left: 20px !important;">School: {{school}}</span> 
+<br>
+<mat-tab-group>
+  <mat-tab label="Faculty" style="position: absolute !important; left:0;">
+    <div style="padding-top: 20px; margin:0px 30px 0px 30px; max-width: 200px;">
+      <input required placeholder="Filter" type="text" id="fil" #fil (keyup)="filter(fil.value)" class="form-control" name="fil"><br>
+      </div>
+      <div style="padding: 20px; margin:0px 30px 30px 30px;">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+            <th scope="col">Id.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Mail</th>
+            <th scope="col">School</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ele of faculty" (click)="facultyrep(ele._id)">
+              <td>{{ele.registerId}}</td>
+              <td>{{ele.name}}</td>
+              <td>{{ele.mail}}</td>
+              <td>{{ele.school}}</td>
+            </tr>
+          </tbody>
+          </table>
+      </div>  
+  </mat-tab>
+  <mat-tab label="Events">
+    <div style="padding-top: 20px; margin:0px 30px 0px 30px;">
+      <select class="form-select form-control" style="max-width: 200px;" #role aria-label="Role" [value]="role.value" (change)="onchange(role.value)">
+        <option selected value="">Filter</option>
+        <option *ngFor="let ele of filters" [value]="ele">{{ele}}</option>
+      </select>
+    </div>
+    
+    <div style="padding: 20px; margin:0px 30px 30px 30px;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+          <th scope="col">Academic Year</th>
+          <th scope="col">Role</th>
+          <th scope="col">Event-Title</th>
+          <th scope="col">Event-Type</th>
+          <th scope="col">Date</th>
+          <th scope="col">Report</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr [hidden]="!satt" *ngFor="let ele of attended">
+            <td>{{ele.academicYear}}</td>
+            <td>{{ele.role}}</td>
+            <td>{{ele.eventTitle}}</td>
+            <td>{{ele.eventType}}</td>
+            <td>{{ele.fromDate}}</td>
+            <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
+              <mat-icon>cloud_download</mat-icon>
+            </button></td>
+          </tr>
+          <tr [hidden]="!sdeli" *ngFor="let ele of delivered">
+            <td>{{ele.academicYear}}</td>
+            <td>{{ele.role}}</td>
+            <td>{{ele.eventTitle}}</td>
+            <td>{{ele.eventType}}</td>
+            <td>{{ele.fromDate}}</td>
+            <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
+              <mat-icon>cloud_download</mat-icon>
+            </button></td>
+          </tr>
+          <tr [hidden]="!sorg" *ngFor="let ele of organized">
+            <td>{{ele.academicYear}}</td>
+            <td>{{ele.role}}</td>
+            <td>{{ele.eventTitle}}</td>
+            <td>{{ele.eventType}}</td>
+            <td>{{ele.fromDate}}</td>
+            <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
+              <mat-icon>cloud_download</mat-icon>
+            </button></td>
+          </tr>
+        </tbody>
+      </table>
+    
+        </div>
+    
+    <div class="float-right" style="margin-right: 30px;"><button type="button" class="btn btn-secondary" (click)="downloadevents(role.value)">Download</button></div>
+    
+  </mat-tab>
+</mat-tab-group>

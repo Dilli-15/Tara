@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal,NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { SharedserviceService } from 'src/app/sharedservice.service';
-import { PublicationmodalComponent } from './publicationmodal/publicationmodal.component';
+import { PublicationmodalComponent } from './publicationmodal/publicationmodal.component'; 
 @Component({
   selector: 'app-publications',
   templateUrl: './publications.component.html',
@@ -15,7 +15,6 @@ export class PublicationsComponent implements OnInit {
   jou:any[]=[];
   pat:any[]=[];
   con:any[]=[];
-  dataSource:any=null;
   constructor(private modal:NgbModal, private config:NgbModalConfig, private shared:SharedserviceService) {
     config.backdrop='static';
     config.keyboard=false;
@@ -58,6 +57,12 @@ export class PublicationsComponent implements OnInit {
     });
     this.shared.getpat(id).subscribe(res=>{
       this.pat=res;
+    });
+  }
+  download(data:any){
+    console.log(data);
+    this.shared.getfile(data).subscribe(res=>{
+
     });
   }
 

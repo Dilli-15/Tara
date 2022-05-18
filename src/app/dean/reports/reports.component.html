@@ -13,45 +13,110 @@
       </span>
     </span>
   </nav><br>
-  <div style="margin:15px;  background: #eee;">
+  <!-- <div style="margin:15px;  background: #eee;">
     <div class="float-left">
        <span style="font-size: 24px;">Reports of {{facdetails.name}}</span> 
     </div>
-    </div>
+    </div> -->
 <br>
+<span style="font-size: 24px; margin-left: 20px !important;">Reports of {{facdetails.name}}</span>
+<br>
+<mat-tab-group>
+  <mat-tab label="Events">
     <div style="padding: 20px; margin:30px 30px 30px 30px;">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-            <th scope="col">Report Name</th>
-            <th scope="col">Download</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="font-size: 15px;">Events</td>
-              <td><button mat-icon-button style="color: #0e3570;; margin: 0;" (click)="downloadEvents()">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+          <th scope="col">Report Name</th>
+          <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-size: 15px;">Events</td>
+            <td><button mat-icon-button style="color: #0e3570;; margin: 0;" (click)="downloadEvents()">
+              <mat-icon>cloud_download</mat-icon>
+            </button></td>
+          </tr>
+          <tr>
+              <td style="font-size: 15px;">Attended Events</td>
+              <td><button mat-icon-button style="color: #0e3570;; margin: 0;" (click)="downloadAEvents()">
+                <mat-icon>cloud_download</mat-icon>
+              </button></td>
+          </tr>
+          <tr>
+              <td style="font-size: 15px;">Organized Events</td>
+              <td><button mat-icon-button style="color: #0e3570;; margin: 0;" (click)="downloadOEvents()">
+                <mat-icon>cloud_download</mat-icon>
+              </button></td>
+          </tr>
+          <tr>
+              <td style="font-size: 15px;">Delivered Events</td>
+              <td><button mat-icon-button style="color: #0e3570;; margin: 0;" (click)="downloadDEvents()">
                 <mat-icon>cloud_download</mat-icon>
               </button></td>
             </tr>
-            <tr>
-                <td style="font-size: 15px;">Attended Events</td>
-                <td><button mat-icon-button style="color: #0e3570;; margin: 0;">
-                  <mat-icon>cloud_download</mat-icon>
-                </button></td>
+        </tbody>
+        </table>
+    </div>
+  </mat-tab>
+  <mat-tab label="Publications">
+    <div style="padding: 20px; margin:30px 30px 30px 30px;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+          <th scope="col">Report Name</th>
+          <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-size: 15px;">Publications</td>
+            <td><button mat-icon-button style="color: #0e3570;; margin: 0;" (click)="downloadPub()">
+              <mat-icon>cloud_download</mat-icon>
+            </button></td>
+          </tr>
+          <tr>
+              <td style="font-size: 15px;">Journals</td>
+              <td><button mat-icon-button style="color: #0e3570;; margin: 0;" (click)="downloadJou()">
+                <mat-icon>cloud_download</mat-icon>
+              </button></td>
+          </tr>
+          <tr>
+              <td style="font-size: 15px;">Conferences</td>
+              <td><button mat-icon-button style="color: #0e3570;; margin: 0;" (click)="downloadCon()">
+                <mat-icon>cloud_download</mat-icon>
+              </button></td>
+          </tr>
+          <tr>
+              <td style="font-size: 15px;">Patents</td>
+              <td><button mat-icon-button style="color: #0e3570;; margin: 0;" (click)="downloadPat()">
+                <mat-icon>cloud_download</mat-icon>
+              </button></td>
             </tr>
-            <tr>
-                <td style="font-size: 15px;">Organized Events</td>
-                <td><button mat-icon-button style="color: #0e3570;; margin: 0;">
-                  <mat-icon>cloud_download</mat-icon>
-                </button></td>
-            </tr>
-            <tr>
-                <td style="font-size: 15px;">Delivered Events</td>
-                <td><button mat-icon-button style="color: #0e3570;; margin: 0;">
-                  <mat-icon>cloud_download</mat-icon>
-                </button></td>
-              </tr>
+        </tbody>
+        </table>
+    </div>
+  </mat-tab>
+  <mat-tab label="Funded Projects">
+    <div style="padding: 20px; margin:30px 30px 30px 30px;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+          <th scope="col">Report Name</th>
+          <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-size: 15px;">Funded-Projects</td>
+            <td><button mat-icon-button style="color: #0e3570;; margin: 0;" (click)="downloadfp()">
+              <mat-icon>cloud_download</mat-icon>
+            </button></td>
+          </tr>
           </tbody>
           </table>
-      </div>
+          </div>
+  </mat-tab>
+</mat-tab-group>
+    

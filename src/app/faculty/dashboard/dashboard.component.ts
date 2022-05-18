@@ -10,6 +10,7 @@ import { SharedserviceService } from 'src/app/sharedservice.service';
 export class DashboardComponent implements OnInit {
 
   constructor(private router:Router,private shared:SharedserviceService) { }
+  fp:any[]=[];
   attended:any[]=[];
   delivered:any[]=[];
   organized:any[]=[];
@@ -20,6 +21,7 @@ export class DashboardComponent implements OnInit {
     this.getADevent();
     this.getorgevent();
     this.getallpublications();
+    this.getfp();
   }
   openevent(){
     this.router.navigate(['/faculty/event']);
@@ -59,5 +61,9 @@ export class DashboardComponent implements OnInit {
       this.pat=res;
     });
   }
-
+  getfp(){
+    this.shared.getprobfid(localStorage.getItem("currentuser")).subscribe(res=>{
+      this.fp=res;
+    })
+  }
 }

@@ -10,37 +10,28 @@
 <br>
 
 <div style="padding: 20px; margin:30px 30px 30px 30px;">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef> Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.role}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="guest">
-        <th mat-header-cell *matHeaderCellDef> Guest </th>
-        <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef> Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.school}} </td>
-      </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      
-       
-      
-      
+  <table class="table table-striped">
+    <thead>
+      <tr>
+      <th scope="col">Academic Year</th>
+      <th scope="col">Degree</th>
+      <th scope="col">Title</th>
+      <th scope="col">No of Students Participated</th>
+      <th scope="col">Report</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ele of data">
+        <td>{{ele.academicYear}}</td>
+        <td>{{ele.degree}}</td>
+        <td>{{ele.projectTitle}}</td>
+        <td>{{ele.noOfStudents}}</td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
+          <mat-icon>cloud_download</mat-icon>
+        </button></td>
+      </tr>
+    </tbody>
     </table>
-    </div>
-    <div *ngIf="dataSource==null" style="text-align:center;">No data to be shown</div>
-
+    </div> 
 
 

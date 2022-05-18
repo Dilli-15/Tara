@@ -88,7 +88,7 @@
       </span>
 
        <label for="proof" class="form-label">Proof</label><br>
-      <input type="file" id="proof" #proof="ngModel" ngModel name="proof"><br>
+      <input type="file" required id="proof" #proof="ngModel" ngModel name="proof" (change)="onselecting($event)"><br>
       </span>
       
     
