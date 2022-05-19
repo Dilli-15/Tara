@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal,NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { SharedserviceService } from 'src/app/sharedservice.service';
 import { PublicationmodalComponent } from './publicationmodal/publicationmodal.component'; 
 @Component({
@@ -15,7 +16,7 @@ export class PublicationsComponent implements OnInit {
   jou:any[]=[];
   pat:any[]=[];
   con:any[]=[];
-  constructor(private modal:NgbModal, private config:NgbModalConfig, private shared:SharedserviceService) {
+  constructor(private toast:ToastrService,private modal:NgbModal, private config:NgbModalConfig, private shared:SharedserviceService) {
     config.backdrop='static';
     config.keyboard=false;
    }
@@ -62,8 +63,15 @@ export class PublicationsComponent implements OnInit {
   download(data:any){
     console.log(data);
     this.shared.getfile(data).subscribe(res=>{
-
-    });
+        console.log(res);
+        let a = document.createElement("a");
+        a.setAttribute('style', 'display:none;');
+        var blob = new Blob([res._body], { type: 'application/pdf' });
+       let url = window.URL.createObjectURL(blob);
+       a.href = url;
+       a.download = data;
+       a.click();
+    },err=>{this.toast.error("File not found")});
   }
 
 }

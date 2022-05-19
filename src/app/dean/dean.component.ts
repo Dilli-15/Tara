@@ -82,8 +82,15 @@ facultyrep(data:any){
 download(data:any){
   console.log(data);
   this.shared.getfile(data).subscribe(res=>{
-
-  });
+      console.log(res);
+      let a = document.createElement("a");
+      a.setAttribute('style', 'display:none;');
+      var blob = new Blob([res._body], { type: 'application/pdf' });
+     let url = window.URL.createObjectURL(blob);
+     a.href = url;
+     a.download = data;
+     a.click();
+  },err=>{this.toast.error("File not found")});
 }
 getevents(){
   for(let i=0;i<this.faculty.length;i++){

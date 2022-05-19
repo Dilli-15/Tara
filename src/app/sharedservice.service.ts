@@ -89,7 +89,7 @@ export class SharedserviceService {
     return this.http.get(this.url+"user/school/"+school);
   }
   getfile(data:any):Observable<any>{
-    return this.http.get(this.url+"download/"+data);
+    return this.http.get(this.url+"download/"+data,{observe:'response',responseType:'blob'});
   }
   addfundpro(data:any){
     return this.http.post(this.url+"project//funded/new",data);
