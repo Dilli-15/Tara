@@ -82,13 +82,12 @@ facultyrep(data:any){
 download(data:any){
   console.log(data);
   this.shared.getfile(data).subscribe(res=>{
-      console.log(res);
+      console.log(res.url);
       let a = document.createElement("a");
       a.setAttribute('style', 'display:none;');
-      var blob = new Blob([res._body], { type: 'application/pdf' });
-     let url = window.URL.createObjectURL(blob);
-     a.href = url;
+     a.href = res.url;
      a.download = data;
+     a.target="blank"
      a.click();
   },err=>{this.toast.error("File not found")});
 }
