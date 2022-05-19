@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { SharedserviceService } from 'src/app/sharedservice.service';
+import { TemplatemodalComponent } from './templatemodal/templatemodal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +11,10 @@ import { SharedserviceService } from 'src/app/sharedservice.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router:Router,private shared:SharedserviceService) { }
+  constructor(private router:Router,private shared:SharedserviceService,private modal:NgbModal, private config:NgbModalConfig) {
+    config.backdrop='static';
+   config.keyboard=false;
+   }
   fp:any[]=[];
   attended:any[]=[];
   delivered:any[]=[];
@@ -65,5 +70,8 @@ export class DashboardComponent implements OnInit {
     this.shared.getprobfid(localStorage.getItem("currentuser")).subscribe(res=>{
       this.fp=res;
     })
+  }
+  opentemplate(){
+    this.modal.open(TemplatemodalComponent,{centered:true, scrollable:false});
   }
 }

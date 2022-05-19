@@ -31,6 +31,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { FundedprojectsComponent } from './faculty/fundedprojects/fundedprojects.component';
 import { FundedprojectmodalComponent } from './faculty/fundedprojects/fundedprojectmodal/fundedprojectmodal.component';
 import { ReportsComponent } from './dean/reports/reports.component';
+import { TemplatemodalComponent } from './faculty/dashboard/templatemodal/templatemodal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { ReportsComponent } from './dean/reports/reports.component';
     FundedprojectsComponent,
     FundedprojectmodalComponent,
     ReportsComponent,
+    TemplatemodalComponent,
     
   ],
   imports: [

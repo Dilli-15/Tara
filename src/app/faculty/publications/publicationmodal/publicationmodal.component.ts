@@ -18,6 +18,7 @@ export class PublicationmodalComponent implements OnInit {
   hidpat=true;
   schools:string[]=["SAS","SCOPE","SENSE","SMEC","SSL","SWE","VISH","VSB","VSL"]
   contenttype:string[]=["Book Authored","Chapter Authored","Monograph Authored","Book Edited","Chapter Edited","Conference Proceeding-Full Paper","Case Study"];
+  forminval:boolean=false
   ngOnInit(): void {
   }
 
@@ -137,5 +138,9 @@ export class PublicationmodalComponent implements OnInit {
       let file=event.target.files[0];
       this.file=file;
     }
+    let arr=this.file.name.split(".")
+    if(arr[arr.length-1]=="pdf"){
+      this.forminval=false;
+    }else{this.forminval=true;}
   }
 }

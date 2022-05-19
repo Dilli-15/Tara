@@ -1,0 +1,39 @@
+<div class="modal-header" style="background-color: #354152;">
+    <h2 class="modal-title" style="color: white;">Report Templates</h2>
+    <button type="button" style="background-color: red; width: 25px;" class="btn-close" aria-label="Close" (click)="closemodal()">
+        <span style="padding: 5px;" aria-hidden="true" style="color: white;">x</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+          <th scope="col">Template</th>
+          <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Events</td>
+                <td><button mat-icon-button style="color: #0e3570;" (click)="download()">
+                    <mat-icon>cloud_download</mat-icon>
+                  </button></td>
+            </tr>
+            <tr>
+                <td>Publications</td>
+                <td><button mat-icon-button style="color: #0e3570;" (click)="download()">
+                    <mat-icon>cloud_download</mat-icon>
+                  </button></td>
+            </tr>
+            <tr>
+                <td>Funded Projects</td>
+                <td><button mat-icon-button style="color: #0e3570;" (click)="download()">
+                    <mat-icon>cloud_download</mat-icon>
+                  </button></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-light" (click)="closemodal()">OK</button>
+  </div>

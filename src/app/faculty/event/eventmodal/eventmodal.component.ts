@@ -15,10 +15,12 @@ export class EventmodalComponent implements OnInit {
   Attended:boolean=true;
   Organized:boolean=true;
   Delivered:boolean=true;
+  showtf:boolean=false;
    roles:string[]=["Attended","Organized","Delivered"];
-   eventtype:string[]=["Guest Lecture","Conference","Seminar","Symposia","Training Programme","Workshop","Orientation Programme","Refresher Programme","Short Term Course","FDP","MOOC/Online Courses"];
+   eventtype:string[]=["Clubs & Chapters","Guest Lecture","Conference","Seminar","Symposia","Training Programme","Workshop","Orientation Programme","Refresher Programme","Short Term Course","FDP","MOOC/Online Courses","Others"];
    orgtype:string[]=["Industry","Academic","Research Center/Lab"]
   file:any="";
+  forminval:boolean=false;
   ngOnInit(): void {
   }
    
@@ -53,12 +55,17 @@ export class EventmodalComponent implements OnInit {
     this.modal.close();
   }
   addevent(data:any){
+    let evtype="";
+    if(data.etype==="Others"){
+      evtype=data.et;
+    }
+    else{evtype=data.etype;}
     if(data.role==="Attended" || data.role==="Delivered"){
       let dat={
         role:data.role,
         academicYear:data.ay,
         eventLevel:data.level,
-        eventType:data.etype,
+        eventType:evtype,
         eventTitle:data.title,
         organizationName:data.org,
         organizationType:data.otype,
@@ -80,7 +87,7 @@ export class EventmodalComponent implements OnInit {
         role:data.role,
         academicYear:data.ay,
         eventLevel:data.level,
-        eventType:data.etype,
+        eventType:evtype,
         eventTitle:data.title,
         organizationName:data.org,
         organizationType:data.otype,
@@ -113,5 +120,15 @@ export class EventmodalComponent implements OnInit {
       let file=event.target.files[0];
       this.file=file;
     }
+    let arr=this.file.name.split(".")
+    if(arr[arr.length-1]=="pdf"){
+      this.forminval=false;
+    }else{this.forminval=true;}
+  }
+  oc(data:any){
+    if(data==="Others"){
+      this.showtf=true;
+    }
+    else{this.showtf=false;}
   }
 }

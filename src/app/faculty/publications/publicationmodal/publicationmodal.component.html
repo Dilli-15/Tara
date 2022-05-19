@@ -236,9 +236,9 @@
                   <input type="date" id="Adate" #Adate="ngModel" [class.is-invalid]="Adate.invalid && Adate.touched" class="form-control" ngModel name="Adate"><br>
                  
         </div>
-        <label for="proof" class="form-label">Proof</label><br>
-      <input type="file" id="proof" required #proof="ngModel" ngModel name="proof" (change)="onselecting($event)"><br>
-      </span>
+        <label for="proof" class="form-label">Proof (Only pdf files allowed)</label><br>
+        <input type="file" required id="proof" #proof="ngModel" ngModel name="proof" (change)="onselecting($event)" [class.is-invalid]="proof.invalid && proof.touched"><br>
+        <span style="color: red;" [hidden]="!forminval">Invalid file</span></span>
     </div>
     <div class="modal-footer">
         <button type="submit" [disabled]="add.invalid || type.value==''" style="background-color: green;" class="btn btn-light" (click)="closemodal()"><span style="color:white;">Add</span></button>

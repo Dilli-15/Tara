@@ -10,7 +10,8 @@ import { SharedserviceService } from 'src/app/sharedservice.service';
 export class FundedprojectmodalComponent implements OnInit {
   file:any="";
   constructor(private modal:NgbActiveModal, private shared:SharedserviceService,private toast:ToastrService) { }
- degrees:string[]=["Bachelor of Technology","Bachelor of Business Administration","Law","Master of Technology","Master of Technology(Integrated)","Research Program(6 yrs)","Development Improvement Preparation for Leadership Organizational Management Achievement"];
+  forminval:boolean=false;
+  degrees:string[]=["Bachelor of Technology","Bachelor of Business Administration","Law","Master of Technology","Master of Technology(Integrated)","Research Program(6 yrs)","Development Improvement Preparation for Leadership Organizational Management Achievement"];
   ngOnInit(): void {
   }
   closemodal(){
@@ -45,5 +46,9 @@ export class FundedprojectmodalComponent implements OnInit {
       let file=event.target.files[0];
       this.file=file;
     }
+    let arr=this.file.name.split(".")
+    if(arr[arr.length-1]=="pdf"){
+      this.forminval=false;
+    }else{this.forminval=true;}
   }
 }

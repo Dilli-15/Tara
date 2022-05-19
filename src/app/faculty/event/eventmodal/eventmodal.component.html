@@ -24,10 +24,12 @@
       </select><br>
 
       <label for="etype" class="form-label">Event-Type</label><br>
-      <select class="form-select form-control" #etype ngModel [value]="etype.value" required aria-label="etype" name="etype">
+      <select class="form-select form-control" #etype ngModel [value]="etype.value" required aria-label="etype" name="etype" (change)="oc(etype.value)">
         <option selected value="">Select an option</option>
         <option *ngFor="let ele of eventtype" [value]="ele">{{ele}}</option>
       </select><br>
+
+      <input type="text" [hidden]="!showtf" [required]="showtf" placeholder="Enter Event type here" id="et" #et="ngModel" [class.is-invalid]="et.invalid && et.touched" class="form-control" ngModel name="et"><br>
       
       <span [hidden]="Organized">
       <label for="co-org1" class="form-label">Co Organizer 1</label><br>
@@ -87,14 +89,15 @@
       
       </span>
 
-       <label for="proof" class="form-label">Proof</label><br>
-      <input type="file" required id="proof" #proof="ngModel" ngModel name="proof" (change)="onselecting($event)"><br>
+       <label for="proof" class="form-label">Proof (Only pdf files allowed)</label><br>
+      <input type="file" required id="proof" #proof="ngModel" ngModel name="proof" (change)="onselecting($event)" [class.is-invalid]="proof.invalid && proof.touched"><br>
+      <span style="color: red;" [hidden]="!forminval">Invalid file</span>
       </span>
       
     
     </div>
      <div class="modal-footer">
-       <button type="submit" [disabled]="add.invalid" style="background-color: green;" class="btn btn-light" (click)="closemodal()"><span style="color:white;">Add</span></button>
+       <button type="submit" [disabled]="add.invalid || forminval" style="background-color: green;" class="btn btn-light" (click)="closemodal()"><span style="color:white;">Add</span></button>
      </div>
     </form>
   

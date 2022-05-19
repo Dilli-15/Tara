@@ -39,10 +39,10 @@
          <label for="nos" class="form-label">List of Reg. No of Students</label><br>
          <textarea class="form-control" placeholder="List Registration Nos of the participants one below the other. Donot use comma or colon after the registration nos" id="ta" rows="3" #los="ngModel" [class.is-invalid]="los.invalid && los.touched" ngModel name="los"></textarea>
          
-         <label for="proof" class="form-label">Proof</label><br>
-         <input type="file" required id="proof" #proof="ngModel" ngModel name="proof" (change)="onselecting($event)"><br>
-    </div>
+         <label for="proof" class="form-label">Proof (Only pdf files allowed)</label><br>
+         <input type="file" required id="proof" #proof="ngModel" ngModel name="proof" (change)="onselecting($event)" [class.is-invalid]="proof.invalid && proof.touched"><br>
+         <span style="color: red;" [hidden]="!forminval">Invalid file</span></div>
     <div class="modal-footer">
-        <button type="submit" [disabled]="add.invalid" style="background-color: green;" class="btn btn-light" (click)="closemodal()"><span style="color:white;">Add</span></button>
+        <button type="submit" [disabled]="add.invalid || forminval" style="background-color: green;" class="btn btn-light" (click)="closemodal()"><span style="color:white;">Add</span></button>
     </div>
 </form>
