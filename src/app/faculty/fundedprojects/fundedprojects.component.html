@@ -18,6 +18,7 @@
       <th scope="col">Title</th>
       <th scope="col">No of Students Participated</th>
       <th scope="col">Report</th>
+      <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +29,9 @@
         <td>{{ele.noOfStudents}}</td>
         <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
           <mat-icon>cloud_download</mat-icon>
+        </button></td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="deletefp(ele._id)">
+          <mat-icon>delete</mat-icon>
         </button></td>
       </tr>
     </tbody>

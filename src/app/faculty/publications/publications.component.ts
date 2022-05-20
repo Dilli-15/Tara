@@ -72,5 +72,22 @@ export class PublicationsComponent implements OnInit {
        a.click();
     },err=>{this.toast.error("File not found")});
   }
-
+  deletep(data:any){
+    if(data.type==="Journal"){
+      this.shared.deletejou(data._id).subscribe(res=>{
+        this.toast.success(res.toString());
+      });
+    }
+    else if(data.type==="Conference"){
+      this.shared.deleteconf(data._id).subscribe(res=>{
+        this.toast.success(res.toString());
+      });
+    }
+    else if(data.type==="Patent"){
+      this.shared.deletepat(data._id).subscribe(res=>{
+        this.toast.success(res.toString());
+      });
+    }
+    window.location.reload();
+  }
 }

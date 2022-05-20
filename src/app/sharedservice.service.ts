@@ -97,4 +97,28 @@ export class SharedserviceService {
   getprobfid(id:any):Observable<any>{
     return this.http.get(this.url+"project/funded/"+id);
   }
+  deletefac(id:any){
+    return this.http.delete(this.url+"user/delete/"+id);
+  }
+  deletedean(id:any){
+    return this.http.delete(this.url+"dean/delete/"+id);
+  }
+  deleteADevents(id:any){
+    return this.http.delete(this.url+"event/delete/oevent/"+id);
+  }
+  deleteOevents(id:any){
+    return this.http.delete(this.url+"event/delete/organized/"+id);
+  }
+  deletefp(id:any){
+    return this.http.delete(this.url+"project/delete/funded/"+id);
+  }
+  deleteconf(id:any){
+    return this.http.delete(this.url+"publication/delete/conference/"+id);
+  }
+  deletejou(id:any){
+    return this.http.delete(this.url+"publication/delete/journal/"+id); 
+  }
+  deletepat(id:any){
+    return this.http.delete(this.url+"publication/delete/patent/"+id); 
+  }
 }

@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
   schools:string[]=["SAS","SCOPE","SENSE","SMEC","SSL","SWE","VISH","VSB","VSL"]
-  displayedColumns: string[] = ['Id', 'name', 'mail', 'school'];
-  displayedColumnsd: string[] = ['Id', 'name', 'school'];
+  displayedColumns: string[] = ['Id', 'name', 'mail', 'school','actions'];
+  displayedColumnsd: string[] = ['Id', 'name', 'school','actions'];
   dataSource:any=null;
   dataSourced:any=null;
   show=true;
@@ -90,6 +90,19 @@ export class AdminComponent implements OnInit {
     window.location.reload();
   }
   logout(){
+    this.toast.success("Log out Success");
     this.router.navigate([""]);
+  }
+  delfac(id:any){
+    this.shared.deletefac(id).subscribe(res=>{
+      this.toast.success(res.toString());
+    });
+    window.location.reload();
+  }
+  deldean(id:any){
+    this.shared.deletedean(id).subscribe(res=>{
+      this.toast.success(res.toString());
+    });
+    window.location.reload();
   }
 }

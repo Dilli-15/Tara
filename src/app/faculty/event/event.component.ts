@@ -86,4 +86,17 @@ export class EventComponent implements OnInit {
        a.click();
     },err=>{this.toast.error("File not found")});
   }
+   deleteeve(data:any){
+    if(data.role==="Organized"){
+      this.shared.deleteOevents(data._id).subscribe(res=>{
+        this.toast.success(res.toString());
+      });
+    }
+    else{
+      this.shared.deleteADevents(data._id).subscribe(res=>{
+        this.toast.success(res.toString());
+      });
+    }
+    window.location.reload();
+  }
 }

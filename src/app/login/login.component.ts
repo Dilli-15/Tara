@@ -11,8 +11,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private toaser:ToastrService, private router:Router,private shared:SharedserviceService) { }
 
-  goadmin(){
-    this.router.navigate(['/admin']);
+  goadmin(data:any){
+    if(data.un==="admin" && data.pass==="admin@123"){
+      this.router.navigate(['/admin']);
+      this.toaser.success("Login Success");
+    }else{
+      this.toaser.error("Invalid Id or Password","Login Falied");
+    }
+    
   }
   gofaclog(data:any){
     let dat={

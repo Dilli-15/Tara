@@ -25,6 +25,7 @@
       <th scope="col">Event-Type</th>
       <th scope="col">Date</th>
       <th scope="col">Report</th>
+      <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -37,6 +38,9 @@
         <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
           <mat-icon>cloud_download</mat-icon>
         </button></td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="deleteeve(ele)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
       </tr>
       <tr [hidden]="!sdeli" *ngFor="let ele of delivered">
         <td>{{ele.academicYear}}</td>
@@ -47,6 +51,9 @@
         <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
           <mat-icon>cloud_download</mat-icon>
         </button></td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="deleteeve(ele)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
       </tr>
       <tr [hidden]="!sorg" *ngFor="let ele of organized">
         <td>{{ele.academicYear}}</td>
@@ -56,6 +63,9 @@
         <td>{{ele.fromDate}}</td>
         <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
           <mat-icon>cloud_download</mat-icon>
+        </button></td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="deleteeve(ele)">
+          <mat-icon>delete</mat-icon>
         </button></td>
       </tr>
     </tbody>

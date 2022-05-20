@@ -22,6 +22,7 @@
       <th scope="col">Type</th>
       <th scope="col">Title</th>
       <th scope="col">Report</th>
+      <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +33,9 @@
         <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
           <mat-icon>cloud_download</mat-icon>
         </button></td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="deletep(ele)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
       </tr>
       <tr [hidden]="!scon" *ngFor="let ele of con">
         <td>{{ele.publicationYear}}</td>
@@ -40,6 +44,9 @@
         <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
           <mat-icon>cloud_download</mat-icon>
         </button></td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="deletep(ele)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
       </tr>
       <tr [hidden]="!spat" *ngFor="let ele of pat">
         <td>{{ele.academicYear}}</td>
@@ -47,6 +54,9 @@
         <td>{{ele.patentTitle}}</td>
         <td><button mat-icon-button style="color: #0e3570;" (click)="download(ele.proof)">
           <mat-icon>cloud_download</mat-icon>
+        </button></td>
+        <td><button mat-icon-button style="color: #0e3570;" (click)="deletep(ele)">
+          <mat-icon>delete</mat-icon>
         </button></td>
       </tr>
     </tbody>

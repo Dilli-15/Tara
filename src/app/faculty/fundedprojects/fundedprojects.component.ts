@@ -38,5 +38,10 @@ export class FundedprojectsComponent implements OnInit {
        a.click();
     },err=>{this.toast.error("File not found")});
   }
-
+  deletefp(data:any){
+    this.shared.deletefp(data).subscribe(res=>{
+      this.toast.success(res.toString());
+    });
+    window.location.reload();
+  }
 }

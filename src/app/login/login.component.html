@@ -19,18 +19,18 @@
 
   <mat-tab-group>
     <mat-tab label="Admin" > <br>
-      <form  class="form">
+      <form  class="form" #adminlog="ngForm" (ngSubmit)="goadmin(adminlog.value)">
 
         <div class="form__field">
-          <input type="email" placeholder="Enter Username">
+          <input type="email" style="color: white;" placeholder="Enter Username" ngModel #un Required name="un">
         </div>
 
         <div class="form__field">
-          <input type="password" placeholder="Enter Password">
+          <input type="password" style="color: white;" placeholder="Enter Password" ngModel #pass Required name="pass">
         </div>
         <br>
         <div class="form__field">
-          <input type="submit" value="Login" (click)="goadmin()">
+          <input type="submit" value="Login">
         </div>
 
       </form>
@@ -41,11 +41,11 @@
       <form #faclogin="ngForm" class="form" (ngSubmit)="gofaclog(faclogin.value)">
 
         <div class="form__field">
-          <input type="email" placeholder="Enter Register Id" ngModel #regid Required name="regid">
+          <input type="email" style="color: white;" placeholder="Enter Register Id" ngModel #regid Required name="regid">
         </div>
 
         <div class="form__field">
-          <input type="password" placeholder="Enter Password" ngModel #pass Required name="pass">
+          <input type="password" style="color: white;" placeholder="Enter Password" ngModel #pass Required name="pass">
         </div>
         <br>
         <div class="form__field">
@@ -58,11 +58,11 @@
       <form #deanlogin="ngForm" class="form" (ngSubmit)="godeanlog(deanlogin.value)">
 
         <div class="form__field">
-          <input type="email" placeholder="Enter Register Id" ngModel #regid Required name="regid">
+          <input type="email" style="color: white;" placeholder="Enter Register Id" ngModel #regid Required name="regid">
         </div>
 
         <div class="form__field">
-          <input type="password" placeholder="Enter Password" ngModel #pass Required name="pass">
+          <input type="password" style="color: white;" placeholder="Enter Password" ngModel #pass Required name="pass">
         </div>
         <br>
         <div class="form__field">
